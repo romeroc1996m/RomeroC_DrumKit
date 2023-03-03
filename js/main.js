@@ -2,7 +2,7 @@
     console.log('music player script file');
 
     // get a reference to all of the audio tags on the page
-    let allaudio = document.querySelectorAll('audio');
+    let allDivs = document.querySelectorAll('.key');
 
     window.addEventListener('keyup', findMatchingAudio);
 
@@ -36,9 +36,8 @@
     }
 
     function resetDivs () {
-        let currentDiv = document.querySelector(`div[data-key="${this.dataset.key}"]`);
 
-        currentDiv.classList.remove('playing');
+        this.classList.remove('playing');
     }
 
-    allaudio.forEach(audio => audio.addEventListener('ended', resetDivs));
+    allDivs.forEach(div => div.addEventListener('transitionend', resetDivs));
